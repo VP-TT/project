@@ -1,0 +1,293 @@
+FOR set1
+
+2.Maven Java Application Development (30M)
+Initial Setup:
+
+Clone the Repository: Open your terminal and clone the given repository.
+
+git clone https://github.com/kumbham bhargavi75/CampusMgmtSystem
+
+Navigate into the directory:
+create folder then change path
+cd CampusMgmtSystem
+
+Open the pom.xml file: Use a text editor to open the pom.xml file located in this directory.
+
+Task 2 & 3: Fix Compiler and JUnit Errors
+
+Final Correct pom.xml File (Including all fixes)
+This is the state your pom.xml should be in after completing all the tasks.
+
+XML
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.campus.mgmt</groupId>
+  <artifactId>campus-mgmt</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>campus-mgmt Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.28</version>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <directory>${project.basedir}/build_output</directory>
+    <finalName>campus-mgmt</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+Task 13: Push the updated project
+Problem: The updated pom.xml needs to be pushed to GitHub.
+
+Solution: Use Git commands from the terminal.
+mvn clean install to know where project is build successfully or not
+
+Commands:
+
+git add pom.xml (or git add . to add all changes)
+
+git commit -m "Fixed pom.xml with all dependencies and configurations"
+
+git push
+
+
+3.QIII. Git & GitHub Integration with Maven Project (30M)
+Tasks:
+
+1.You want to start tracking your Campus Event Management System project in Git for the first time. - 2M:
+
+git init (Initializes a new Git repository in the current directory)
+
+2.You want to save a snapshot of the current project with a message "Added event registration feature". - 2M:
+
+git add . (Stages all changes)
+
+git commit -m "Added event registration feature" (Commits the changes with the given message)
+
+3.You want to see the current status of modified and staged files. - 2M:
+
+git status (Shows the working tree and staging area status)
+
+4.You want to view the commit history of your project to check what changes were made. - 2M:
+
+git log (Shows the commit history)
+
+5.You cloned a repository but want to see all branches in it. - 2M:
+
+git branch -a (Lists all local and remote branches)
+
+6.You created a new safety branch and want to switch to it. - 3M:
+
+git checkout -b safety-branch (Creates a new branch named safety-branch and switches to it)
+
+7.You received a patch file from a teammate fixing bugs in the event notification module. - 3M:
+
+git apply [patch_file_name.patch] (Applies the changes from the patch file)
+
+8.You want to create a new branch for online feedback functionality, make multiple commits, and then merge it cleanly into main. - 3M:
+
+git checkout -b online-feedback-feature (Create and switch to a new branch)
+
+git add .
+
+git commit -m "Commit 1" (Make multiple commits)
+
+git checkout main (Switch back to the main branch)
+
+git merge online-feedback-feature (Merge the changes)
+
+9.You want to un-merge the last commit whether with main. - 3M:
+
+This is a tricky question. If you haven't pushed the merge, you can use git reset --hard HEAD~1 on the main branch. If you have pushed it, you should use git revert [merge_commit_hash] to create a new commit that undoes the merge.
+
+10.You want to collaborate using a fork-and-pull workflow to contribute a new branch. - 3M:
+
+Fork: Fork the main repository on GitHub.
+
+Clone: Clone your forked repository: git clone [your_fork_url]
+
+Branch: Create a new branch: git checkout -b new-feature
+
+Commit & Push: Make changes, commit, and push to your fork: git push origin new-feature
+
+Pull Request: Go to your GitHub fork and create a new Pull Request to the original repository.
+
+11.You want to see what changes are present between your local branch and main on GitHub. - 2M:
+
+First, make sure your local main is up-to-date: git fetch origin
+
+Then, compare your branch to the remote main: git diff main...your-branch
+
+12.Your teammate pushed a new branch event-feedback to GitHub. You want to test it locally. - 2M:
+
+git fetch origin (Fetches all remote branches and tags)
+
+git checkout event-feedback (Creates a local branch from the fetched remote branch and switches to it)
+
+13.You want to see the differences introduced by the last commit on your branch. - 2M:
+
+git show HEAD (Shows the last commit)
+
+git diff HEAD~1 HEAD (Compares the last commit with the one before it)
+
+
+QIV. Docker Containerization for Maven JAVA Application
+1. Write a Dockerfile:
+
+Create a file named Dockerfile in the root of your project.
+
+Add the following content:
+
+Dockerfile
+
+# Stage 1: Build the application
+FROM maven:3.8.1-openjdk-17 AS build
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+COPY src ./src
+RUN mvn package -DskipTests
+
+# Stage 2: Create a lightweight runtime image
+FROM openjdk:17-slim
+WORKDIR /app
+COPY --from=build /app/target/*.war app.war
+EXPOSE 8080
+CMD ["java", "-jar", "app.war"]
+2. Check docker and list images:
+
+docker version
+
+docker images
+
+3. Pull and run a hello-world image:
+
+docker pull hello-world
+
+docker run hello-world
+
+4. Run a container in interactive mode:
+
+docker run -it ubuntu /bin/bash
+
+5. Build a custom image:
+
+docker build -t CMSIMAGE .
+
+6. Pull, run, and list containers:
+
+docker pull tomcat:latest
+
+docker run -d -p 8080:8080 tomcat
+
+docker ps
+
+7. Start and stop a container:
+
+docker stop [container_id]
+
+docker start [container_id]
+
+8. List all containers (running and stopped):
+
+docker ps -a
+
+9. Push your custom image to Docker Hub:
+
+docker login
+
+docker tag CMSIMAGE your_username/cmsimage:1.0
+
+docker push your_username/cmsimage:1.0
+
+10. Check if a container exited cleanly or crashed:
+
+docker ps -a
+
+docker logs [container_id]
+
+
+QV. Docker Compose
+Task 1: Create a docker-compose.yml file with the correct port mappings.
+
+The requirement:
+
+Access Tomcat at port 8086.
+
+Access the Campus Management System app at port 7007.
+
+The corrected docker-compose.yml file:
+
+YAML
+
+version: '3.8'
+
+services:
+  campus-mgmt-app:
+    image: your_username/cmsimage:1.0 # Replace with your Docker Hub username
+    container_name: campus-mgmt-app
+    # Maps host port 7007 to the container's internal port 8080
+    ports:
+      - "7007:8080"
+
+  tomcat-server:
+    image: tomcat:latest
+    container_name: tomcat-server
+    # Maps host port 8086 to the container's internal port 8080
+    ports:
+      - "8086:8080"
+
+Task 2 & 3: Run the application and access it.
+
+Run Docker Compose:
+
+Save the docker-compose.yml file.
+
+Open your terminal in the same directory and type docker-compose up -d
+
+To show the Campus Management System app:
+
+Go to the URL: http://localhost:7007
+To show the Tomcat server:
+
+Go to the URL: http://localhost:8086
+
+
+
