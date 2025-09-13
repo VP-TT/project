@@ -135,15 +135,20 @@ Add inside <plugins>:
     <artifactId>tomcat7-maven-plugin</artifactId>
     <version>2.2</version>
     <configuration>
+        <!-- URL of your Tomcat manager -->
+        <url>http://localhost:8080/manager/text</url>
+        <!-- Server ID from settings.xml with credentials -->
+        <server>TomcatServer</server>
+        <!-- Context path for your webapp -->
         <path>/HospitalMgmtSystem</path>
-        <port>8080</port>
+        <!-- If app already exists, update it -->
+        <update>true</update>
     </configuration>
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.0-b01</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 </plugin>
