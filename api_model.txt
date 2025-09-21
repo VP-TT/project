@@ -1,0 +1,183 @@
+(base) PS C:\WINDOWS\system32> docker login
+Authenticating with existing credentials...
+Login Succeeded
+(base) PS C:\WINDOWS\system32> cd ..
+(base) PS C:\WINDOWS> cd ..
+(base) PS C:\> cd users
+(base) PS C:\users> cd rama
+(base) PS C:\users\rama> cd eclipse-workspace
+(base) PS C:\users\rama\eclipse-workspace> cd MavenWeb1
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> notepad Dockerfile
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker build -t docker1:trial .
+[+] Building 0.5s (7/7) FINISHED                                                                   docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 372B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/tomcat:10.1-jdk11                                               0.4s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [1/3] FROM docker.io/library/tomcat:10.1-jdk11@sha256:8375d5fdd37fdcc019ff337bf8a5f0c983548d608b9a7979660c3cb  0.0s
+ => => resolve docker.io/library/tomcat:10.1-jdk11@sha256:8375d5fdd37fdcc019ff337bf8a5f0c983548d608b9a7979660c3cb  0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => CACHED [2/3] RUN rm -rf /usr/local/tomcat/webapps/ROOT                                                         0.0s
+ => ERROR [3/3] COPY MavenWeb1.war /usr/local/tomcat/webapps/ROOT.war                                              0.0s
+------
+ > [3/3] COPY MavenWeb1.war /usr/local/tomcat/webapps/ROOT.war:
+------
+Dockerfile:7
+--------------------
+   5 |
+   6 |     # Copy your WAR file into Tomcat’s webapps directory
+   7 | >>> COPY MavenWeb1.war /usr/local/tomcat/webapps/ROOT.war
+   8 |
+   9 |     # Expose port 8080
+--------------------
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref 52987f69-faf0-41e1-8230-23b7ed9da442::mi1gn3ula1xfag74gko1lhqbb: "/MavenWeb1.war": not found
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker build -t docker1:trial .
+[+] Building 0.5s (7/7) FINISHED                                                                   docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 370B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/tomcat:10.1-jdk11                                               0.5s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [1/3] FROM docker.io/library/tomcat:10.1-jdk11@sha256:8375d5fdd37fdcc019ff337bf8a5f0c983548d608b9a7979660c3cb  0.0s
+ => => resolve docker.io/library/tomcat:10.1-jdk11@sha256:8375d5fdd37fdcc019ff337bf8a5f0c983548d608b9a7979660c3cb  0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => CACHED [2/3] RUN rm -rf /usr/local/tomcat/webapps/ROOT                                                         0.0s
+ => ERROR [3/3] COPY yourapp.war /usr/local/tomcat/webapps/ROOT.war                                                0.0s
+------
+ > [3/3] COPY yourapp.war /usr/local/tomcat/webapps/ROOT.war:
+------
+Dockerfile:7
+--------------------
+   5 |
+   6 |     # Copy your WAR file into Tomcat’s webapps directory
+   7 | >>> COPY yourapp.war /usr/local/tomcat/webapps/ROOT.war
+   8 |
+   9 |     # Expose port 8080
+--------------------
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref 52987f69-faf0-41e1-8230-23b7ed9da442::n3m8l4akgoe3u0c8houc2yzju: "/yourapp.war": not found
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker build -t docker1:trial .
+[+] Building 0.6s (7/7) FINISHED                                                                   docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 403B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/tomcat:9.0-jdk11                                                0.5s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [1/3] FROM docker.io/library/tomcat:9.0-jdk11@sha256:82ffdb70d2c02d8eef6af8b3d36e6662486afc64e6451b223b897e14  0.0s
+ => => resolve docker.io/library/tomcat:9.0-jdk11@sha256:82ffdb70d2c02d8eef6af8b3d36e6662486afc64e6451b223b897e14  0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => CACHED [2/3] RUN rm -rf /usr/local/tomcat/webapps/ROOT                                                         0.0s
+ => ERROR [3/3] COPY yourapp.war /usr/local/tomcat/webapps/ROOT.war                                                0.0s
+------
+ > [3/3] COPY yourapp.war /usr/local/tomcat/webapps/ROOT.war:
+------
+Dockerfile:8
+--------------------
+   6 |
+   7 |     # Copy your WAR file into Tomcat’s webapps directory
+   8 | >>> COPY yourapp.war /usr/local/tomcat/webapps/ROOT.war
+   9 |
+  10 |     # Expose port 8080
+--------------------
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref 52987f69-faf0-41e1-8230-23b7ed9da442::ewgx21mgj5z5e9dvp7yxtspg4: "/yourapp.war": not found
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker build -t docker1:trial .
+[+] Building 40.2s (8/8) FINISHED                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 371B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/tomcat:9.0-jdk11                                                0.5s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [1/3] FROM docker.io/library/tomcat:9.0-jdk11@sha256:82ffdb70d2c02d8eef6af8b3d36e6662486afc64e6451b223b897e1  38.8s
+ => => resolve docker.io/library/tomcat:9.0-jdk11@sha256:82ffdb70d2c02d8eef6af8b3d36e6662486afc64e6451b223b897e14  0.0s
+ => => sha256:30e90268e187c47657a5844ff9ae7e362eaa2a10a62d3848979e2b747d7a95b7 145.67MB / 145.67MB                35.2s
+ => => sha256:4fcf4bcc7c794377a11048eb97e1d35e19cbde70859101d3ad0b546dfa934e1b 159B / 159B                         5.1s
+ => => sha256:a6d596b0221f2272bf72320b1381f6e03283fa3e88ca816f87ca0a5bc4ad329e 2.72kB / 2.72kB                     0.0s
+ => => sha256:1eb43857d5308a40718704288d12cb0f13a2c0c288decd5254238b35963ff9d7 16.97MB / 16.97MB                   4.1s
+ => => sha256:82ffdb70d2c02d8eef6af8b3d36e6662486afc64e6451b223b897e1437e4ee92 6.65kB / 6.65kB                     0.0s
+ => => sha256:d63aec19c91bdbfcf65a609ea3bb5e90ec22c3a59d8ee696033b6593731588ba 12.49kB / 12.49kB                   0.0s
+ => => extracting sha256:1eb43857d5308a40718704288d12cb0f13a2c0c288decd5254238b35963ff9d7                          1.4s
+ => => sha256:c530a0862e0fbafb783bf111561e5825ec4bb8d042601ab5346bba00a59d0e9b 2.28kB / 2.28kB                     6.9s
+ => => sha256:d195232c379643c92c0b6f0ac4964592e8ccf0ea3e7423464a4b70bebae5688e 138B / 138B                         7.5s
+ => => sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B                           8.0s
+ => => sha256:9f44622f62da71d9be4f704c69ea5334c27bd0be62fb506c68d4a195ffc95884 13.96MB / 13.96MB                  19.4s
+ => => extracting sha256:30e90268e187c47657a5844ff9ae7e362eaa2a10a62d3848979e2b747d7a95b7                          2.6s
+ => => extracting sha256:4fcf4bcc7c794377a11048eb97e1d35e19cbde70859101d3ad0b546dfa934e1b                          0.0s
+ => => extracting sha256:c530a0862e0fbafb783bf111561e5825ec4bb8d042601ab5346bba00a59d0e9b                          0.0s
+ => => extracting sha256:d195232c379643c92c0b6f0ac4964592e8ccf0ea3e7423464a4b70bebae5688e                          0.0s
+ => => extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1                          0.0s
+ => => extracting sha256:9f44622f62da71d9be4f704c69ea5334c27bd0be62fb506c68d4a195ffc95884                          0.6s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 564B                                                                                  0.0s
+ => [2/3] RUN rm -rf /usr/local/tomcat/webapps/ROOT                                                                0.7s
+ => [3/3] COPY ./src /app/src                                                                                      0.0s
+ => exporting to image                                                                                             0.1s
+ => => exporting layers                                                                                            0.0s
+ => => writing image sha256:d7c7fb3be533c9d8b7e38a0e5523e8c6324f7e0f054c3c82d2a738d26839dbe0                       0.0s
+ => => naming to docker.io/library/docker1:trial                                                                   0.0s
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker run -d -p 3000:8080 docker1
+Unable to find image 'docker1:latest' locally
+docker: Error response from daemon: pull access denied for docker1, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker build -t docker1:trial .
+[+] Building 0.8s (7/7) FINISHED                                                                   docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 147B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/tomcat:9.0                                                      0.6s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 1.77kB                                                                                0.0s
+ => CACHED [1/2] FROM docker.io/library/tomcat:9.0@sha256:5e01e655335815c31ce60a8a0748300f691d465275f9b49cbe844c3  0.0s
+ => [2/2] COPY target/*.war /usr/local/tomcat/webapps/ROOT.war                                                     0.0s
+ => exporting to image                                                                                             0.0s
+ => => exporting layers                                                                                            0.0s
+ => => writing image sha256:27acaec383a6dd4f94907334b8b9c2f001b2593f5c3015e6d310e636abd074eb                       0.0s
+ => => naming to docker.io/library/docker1:trial                                                                   0.0s
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker run -d -p 3000:8080 docker1:trial
+403706d107434888f32a1de68f5b7a4e241d0f298738dd11e6649b60f9b0a62c
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker tag docker1:trial docker2
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker tag docker1:trial docker2/docker1:trial
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker push docker2/docker1:trial
+The push refers to repository [docker.io/docker2/docker1]
+c50867c81805: Preparing
+5f70bf18a086: Preparing
+615644a0dfb6: Preparing
+68ae0df016d2: Preparing
+57e1c5c4536a: Preparing
+ce4ea9b031b2: Waiting
+00c913b44116: Waiting
+2a8dbe302ea5: Waiting
+f9f52dc133e2: Waiting
+denied: requested access to the resource is denied
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker pull hello-world
+Using default tag: latest
+latest: Pulling from library/hello-world
+17eec7bbc9d7: Pull complete
+Digest: sha256:54e66cc1dd1fcb1c3c58bd8017914dbed8701e2d8c74d9262e26bd9cc1642d31
+Status: Downloaded newer image for hello-world:latest
+docker.io/library/hello-world:latest
+(base) PS C:\users\rama\eclipse-workspace\MavenWeb1> docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
