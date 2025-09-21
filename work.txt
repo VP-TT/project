@@ -260,3 +260,27 @@ a.	docker-compose up → starts the services defined in your docker-compose.yml.
 b.	--scale wordpress=2 → tells Docker Compose to create 2 replicas (containers) of 	the service named wordpress.
 c.	-d → runs the containers in detached mode (in the background).
 
+
+version: "3.9"
+
+services:
+  hospital-app:
+    image: shashank0103/docker1:trail # your Docker Hub image
+    container_name: hospital-app
+    ports:
+      - "7079:7007" # host:container port
+    depends_on:
+      - mongodb
+    restart: always
+
+  mongodb:
+    image: mongo:6.0
+    container_name: hospital-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: always
+
+volumes:
+  mongo-data:
